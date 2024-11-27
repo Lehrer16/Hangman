@@ -27,7 +27,7 @@ const App = () => {
 
     return (
         <Router>
-            <Navbar onLoginClick={handleLoginClick} username={username} /> {/* Pass username to Navbar */}
+            
             <Routes>
                 <Route path="/hangman" element={<Hangman />} />
                 <Route path="/" element={<Home />} />
