@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Body from './components/body';
-import RecipeDetails from './components/recipeDetails';
-import CocktailBody from './components/cocktailBody'; 
-import CocktailDetails from './components/cocktailDetails'; 
 import Navbar from './components/Navbar';
 import LoginModal from './components/loginModal'; // Import LoginModal
-import SavedRecipes from './components/savedRecipes';
+import Hangman from './pages/Hangman'
+import Home from './pages/Home';
+
 
 const App = () => {
     const [showModal, setShowModal] = useState<boolean>(false);
@@ -32,11 +29,8 @@ const App = () => {
         <Router>
             <Navbar onLoginClick={handleLoginClick} username={username} /> {/* Pass username to Navbar */}
             <Routes>
-                <Route path="/" element={<Body />} />
-                <Route path="/cocktail" element={<CocktailBody />} />
-                <Route path="/cocktail/:id" element={<CocktailDetails />} /> 
-                <Route path="/recipe/:id" element={<RecipeDetails token = { token } username= {username}/>} />
-                <Route path="/saved-recipes" element={<SavedRecipes username={ username } token = { token }/>} />
+                <Route path="/hangman" element={<Hangman />} />
+                <Route path="/" element={<Home />} />
             </Routes>
             <LoginModal 
                 show={showModal} 

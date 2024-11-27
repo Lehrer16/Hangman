@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const App = () => {
+const Home = () => {
   const [ingredients, setIngredients] = useState('');
   const [recipes, setRecipes] = useState([]);
 
@@ -37,4 +37,4 @@ const App = () => {
     </div>
   );
 };
-export default App;
+export default Home;

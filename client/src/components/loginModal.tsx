@@ -1,5 +1,4 @@
 import React, { useState, FormEvent } from 'react';
-import './loginModal.css';
 
 interface LoginModalProps {
     show: boolean;
