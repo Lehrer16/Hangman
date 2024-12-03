@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
 import LoginModal from './components/loginModal'; // Import LoginModal
 import Hangman from './pages/Hangman'
 import Home from './pages/Home';
@@ -27,7 +26,6 @@ const App = () => {
 
     return (
         <Router>
-            <Navbar onLoginClick={handleLoginClick} username={username} /> {/* Pass username to Navbar */}
             <Routes>
                 <Route path="/hangman" element={<Hangman />} />
                 <Route path="/" element={<Home />} />
