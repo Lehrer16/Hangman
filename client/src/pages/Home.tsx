@@ -20,7 +20,7 @@ const Home = () => {
 
     // Send credentials to the backend API for verification
     const loginData = { email, password };
-    const endpoint = isLoggedIn ? 'auth/register' : '/aut/login';
+    const endpoint = '/auth/login';
     try {
       const response = await fetch(endpoint, {
         method: 'POST',

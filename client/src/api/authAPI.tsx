@@ -1,7 +1,7 @@
 import { UserLogin } from "../interfaces/UserLogin";
 
 //this function is responsible for sending a POST request to the /auth/login
-const login = async (userInfo: UserLogin) => {
+export const login = async (userInfo: UserLogin) => {
     try {
         // 
 

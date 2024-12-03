@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Account from './components/Account'
 import LoginModal from './components/loginModal'; // Import LoginModal
 import Hangman from './pages/Hangman'
 import Home from './pages/Home';
@@ -31,6 +32,7 @@ const App = () => {
             <Routes>
                 <Route path="/hangman" element={<Hangman />} />
                 <Route path="/" element={<Home />} />
+                <Route path="/account" element={<Account />} />
             </Routes>
             <LoginModal 
                 show={showModal} 
