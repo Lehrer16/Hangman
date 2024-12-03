@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+<<<<<<< HEAD
 import Navbar from './components/Navbar';
 import Account from './components/Account'
+=======
+>>>>>>> e856eecc19cf6674e331bc21aeac951ab7b1aa16
 import LoginModal from './components/loginModal'; // Import LoginModal
 import Hangman from './pages/Hangman'
 import Home from './pages/Home';
@@ -28,7 +31,10 @@ const App = () => {
 
     return (
         <Router>
+<<<<<<< HEAD
             
+=======
+>>>>>>> e856eecc19cf6674e331bc21aeac951ab7b1aa16
             <Routes>
                 <Route path="/hangman" element={<Hangman />} />
                 <Route path="/" element={<Home />} />

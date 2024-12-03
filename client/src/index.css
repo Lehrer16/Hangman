@@ -24,7 +24,11 @@ a:hover {
 
 body {
   margin: 0;
+<<<<<<< HEAD
   place-items: center;
+=======
+
+>>>>>>> e856eecc19cf6674e331bc21aeac951ab7b1aa16
   min-width: 320px;
   min-height: 100vh;
 }
@@ -46,7 +50,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #545455;
 }
 button:focus,
 button:focus-visible {
@@ -59,13 +63,14 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: #6f707af8;
   }
   button {
     background-color: #f9f9f9;
   }
 }
 
+<<<<<<< HEAD
 /* Home Page Styling */
 
 .logo {
@@ -81,3 +86,57 @@ button:focus-visible {
 
 }
 
+=======
+.key{
+  width: 100%;
+  border: 3px solid rgb(42, 42, 42);
+  aspect-ratio: 1/1;
+  font-size: 2.5rem;
+  padding: .5rem;
+  font-weight: bold;
+  cursor: pointer
+
+}
+
+.rightletter{
+  width: 100%;
+  border: 3px solid rgb(0, 80, 9);
+  aspect-ratio: 1/1;
+  font-size: 2.5rem;
+  padding: .5rem;
+  font-weight: bold;
+  cursor: pointer;
+  
+  
+
+}
+
+.wrongletter{
+  width: 100%;
+  border: 3px solid rgb(218, 0, 0);
+  aspect-ratio: 1/1;
+  font-size: 2.5rem;
+  padding: .5rem;
+  font-weight: bold;
+  cursor: pointer;
+ 
+  
+
+}
+
+.key:focus,
+.key:focus-visible:not(:disabled) {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  .key {
+    background-color: #f9f9f9;
+  }
+}
+>>>>>>> e856eecc19cf6674e331bc21aeac951ab7b1aa16
