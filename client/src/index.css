@@ -24,13 +24,9 @@ a:hover {
 
 body {
   margin: 0;
-<<<<<<< HEAD
-  place-items: center;
-=======
-
->>>>>>> e856eecc19cf6674e331bc21aeac951ab7b1aa16
   min-width: 320px;
   min-height: 100vh;
+  text-align: center;
 }
 
 h1 {
@@ -70,23 +66,6 @@ button:focus-visible {
   }
 }
 
-<<<<<<< HEAD
-/* Home Page Styling */
-
-.logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px;
-}
-
-.login, .create{
-  margin: 20px;
- 
-
-}
-
-=======
 .key{
   width: 100%;
   border: 3px solid rgb(42, 42, 42);
@@ -139,4 +118,3 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
->>>>>>> e856eecc19cf6674e331bc21aeac951ab7b1aa16

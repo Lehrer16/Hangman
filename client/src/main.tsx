@@ -1,8 +1,28 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import ReactDOM from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-createRoot(document.getElementById('root')!).render(
-    <App />
+import App from './App'
+import Hangman from './pages/Hangman'
+import Home from './pages/Home';
+import ErrorPage from './pages/ErrorPage';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <Home />
+      }, {
+        path: '/hangman',
+        element: <Hangman />
+      }
+    ]
+  }
+])
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <RouterProvider router={router} />
 )
