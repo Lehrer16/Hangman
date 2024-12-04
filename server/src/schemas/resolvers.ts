@@ -39,7 +39,7 @@
 
 import IUserContext from '../interfaces/UserContext.js';
 import IUserDocument from '../interfaces/UserDocument.js';
-import User from '../models/User.js';
+import { User } from '../models/index.js';
 import { signToken, AuthenticationError } from '../services/auth-service.js';
 
 const resolvers = {
