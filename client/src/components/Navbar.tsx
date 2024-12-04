@@ -5,13 +5,15 @@ import React from 'react';
 
 const Navbar: React.FC= ({ }) => {
     return (
+        <div className='container'>
         <nav className="navbar">
             <ul>
-                <li><Link to="/">Home</Link></li> 
-                <li><Link to="/Account">Account</Link></li>
-                <li><Link to="/Hi-Scores">Hi-Scores</Link></li>
+                <Link to="/">Home   </Link>
+                <Link to="/Account"> Account   </Link>
+                <Link to="/Hi-Scores"> Hi-Scores   </Link>
             </ul>
         </nav>
+        </div>
     );
 };
 
