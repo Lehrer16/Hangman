@@ -29,7 +29,7 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
     return; // Explicitly return to end execution
   }
 
-  const secretKey = process.env.JWT_SECRET_KEY || '';
+  const secretKey = process.env.JWT_SECRET_KEY || 'Password123';
   jwt.verify(token, secretKey, (err: any, user: any) => {
     if (err) {
       res.sendStatus(403); // Forbidden

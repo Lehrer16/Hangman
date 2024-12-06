@@ -59,7 +59,7 @@ return (
             </div>
             {/* Submit button */}
             <div className="form-group">
-                <button className="btn btn-primary" type='submit'>Login</button>
+                <button className="btn btn-primary" style={{ cursor: 'pointer'}}type='submit'>Login</button>
             </div>
         </form>
     </div>

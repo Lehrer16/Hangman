@@ -14,8 +14,6 @@ interface IUser {
   username: string;
   email: string;
   password: string;
-  savedBooks: string[];
-  bookCount: number;
   isCorrectPassword(password: string): Promise<boolean>;
 }
 

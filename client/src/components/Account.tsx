@@ -2,7 +2,7 @@ import React , {useState} from "react";
 
 
 
-const accountPage = () => {
+const Account = () => {
 
     const [username, setUsername] = useState('user')
     const [newUsername, setNewUsername] = useState('')
@@ -44,4 +44,4 @@ const accountPage = () => {
     )
 }
 
-export default accountPage;
+export default Account;

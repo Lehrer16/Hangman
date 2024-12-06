@@ -5,6 +5,7 @@ import App from './App'
 import Hangman from './pages/Hangman'
 import Home from './pages/Home';
 import ErrorPage from './pages/ErrorPage';
+import Account from './components/Account';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,9 @@ const router = createBrowserRouter([
       }, {
         path: '/hangman',
         element: <Hangman />
+      }, {
+        path: '/account',
+        element: <Account />
       }
     ]
   }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../utils/auth.ts'
 import logo from '../assets/hangman_pic.png'
 import '../index.css'
 
@@ -11,18 +12,17 @@ const Home = () => {
   const [password, setPassword] = useState('');
   
   // Handle form inputs
-  const handleEmailChange = (e) => setEmail(e.target.value);
-  const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value);
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 
   // Handle login form submission (JWT integration)
-  const handleLoginSubmit = async (e) => {
+  const handleLoginSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Send credentials to the backend API for verification
     const loginData = { email, password };
-    const endpoint = '/auth/login';
     try {
-      const response = await fetch(endpoint, {
+      const response = await fetch('http://127.0.0.1:3001', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ const Home = () => {
   };
 
   // Handle create account form submission (you'll integrate this with backend later)
-  const handleCreateAccountSubmit = (e) => {
+  const handleCreateAccountSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Handle account creation logic (API call)
     alert('Account created!');
@@ -147,6 +147,13 @@ const Home = () => {
                 type="password"
                 required
               />
+            </div>
+            <div>
+              <label>Confirm Password</label>
+              <input
+                type="password"
+                required
+                />
             </div>
             <button type="submit">Create Account</button>
           </form>
