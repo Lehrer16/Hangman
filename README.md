@@ -5,9 +5,8 @@ This website is an online hangman game that is written in React. It features an 
 
 
 # Installation Steps
-```python
 No installation required - This is a web application.
-```
+
 
 # Usage
 The user will first be prompted to login/signup on the website, then they can start playing the game.
