@@ -2,15 +2,12 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+}
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body {
+  background-color: gray;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 a {
@@ -18,21 +15,40 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
 
-body {
-  display: flex;
-  margin: 0;
-  min-width: 1000px;
-  min-height: 100vh;
-
+.logo {
+  height: 200px;
+  width: 400px;
+  margin-bottom: 20px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.homePage {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 11%;
+}
+
+.homePage form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+
+h2 {
+  margin-top: 30px;
+}
+
+input {
+  margin-bottom: 1rem;
+  margin-left: 0.5rem;
 }
 
 button {
@@ -42,82 +58,50 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #000000;
+  background-color: black;
+  color: white;
   cursor: pointer;
   transition: border-color 0.25s;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  transition: transform 0.3s;
 }
+
 button:hover {
   border-color: #545455;
+  transform: translateY(-3px);
+  box-shadow: 0px 3px rgb(48, 48, 48);
 }
+
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #6f707af8;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-.key{
-  width: 100%;
-  border: 3px solid rgb(42, 42, 42);
-  aspect-ratio: 1/1;
-  font-size: 2.5rem;
-  padding: .5rem;
-  font-weight: bold;
-  cursor: pointer
-
+  outline: 1px auto -webkit-focus-ring-color;
 }
 
 .rightletter{
   width: 100%;
-  border: 3px solid rgb(0, 80, 9);
+  border: 3px solid #4CAF50 !important;
   aspect-ratio: 1/1;
   font-size: 2.5rem;
   padding: .5rem;
   font-weight: bold;
   cursor: pointer;
-  
-  
-
 }
 
 .wrongletter{
   width: 100%;
-  border: 3px solid rgb(218, 0, 0);
+  border: 3px solid rgb(218, 0, 0) !important;
   aspect-ratio: 1/1;
   font-size: 2.5rem;
   padding: .5rem;
   font-weight: bold;
   cursor: pointer;
- 
-  
-
 }
 
 .key:focus,
 .key:focus-visible:not(:disabled) {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-
-  .key {
-    background-color: #f9f9f9;
-  }
 }
 
 .box { 
@@ -128,18 +112,123 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   margin: 0;
-}
+} 
 
 .container { 
   width: 100%; 
   display: flex; 
   justify-content: left;
+  font-size: 2vh;
 }
 
-.hangman{
+.container button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: black;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  transition: transform 0.3s;
+}
+
+.container button:hover {
+  border-color: #545455;
+  transform: translateY(-3px);
+  box-shadow: 0px 3px rgb(48, 48, 48);
+}
+
+.hangman {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+}
+
+.keyboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  gap: 0.2rem; 
+  width: 100%;
+  margin-top: 2rem;
 }
 
-.navbar{
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.1rem;
+}
 
+.key {
+  width: 65px; 
+  height: 60px; 
+  font-size: 1.5rem; 
+  background-color: black;
+  border: 1px solid rgb(48, 48, 48);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+@media (max-width: 875px) {
+  .key {
+    width: 45px; 
+    height: 45px;
+    font-size: 1.4rem; 
+  }
+}
+
+@media (max-width: 725px) {
+  .key {
+    width: 40px; 
+    height: 40px; 
+    font-size: 1.2rem; 
+  }
+
+  @media (max-width: 650px) {
+    .key {
+      width: 30px; 
+      height: 30px; 
+      font-size: 0.8rem; 
+    }
+
+    @media (max-width: 500px) {
+      .key {
+        width: 20px; 
+        height: 20px; 
+        font-size: 0.5rem;
+      }
+}}}
+
+.accountPage {
+  display: flex;
+  flex-direction: column;              
+  justify-content: center;     
+  align-items: center;         
+  max-width: 100%;             
+  max-height: 75vh;           
+  text-align: center;          
+  margin: 0;                   
+  height: 75vh;               
+}
+
+.accountPage form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+#returnToGame {
+  position: fixed; 
+  top: 30px; 
+  right: 30px; 
+  padding: 10px 20px;
 }

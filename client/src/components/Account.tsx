@@ -1,4 +1,5 @@
 import React , {useState} from "react";
+import { Link } from "react-router-dom";
 
 
 
@@ -19,18 +20,26 @@ const Account = () => {
     }
 
     return (
-        <div>
+        <div className="accountPage">
+            <Link to="/hangman">
+            <button id="returnToGame">Back to the game</button>
+            </Link>
+
             <h2>Account Page</h2>
             <p>Welcome {username}!</p>
 
             {isEditing ? (
                 <div>
+                    <h3>Enter New Username:</h3>
+                    <div>
                     <input
                     type = "test"
                     placeholder = "New Username"
                     value = {newUsername}
                     onChange = {(e) => setNewUsername(e.target.value)}
                     />
+                    </div>
+                    
                     <button onClick = {handleUsernameChange}>Save Username</button>
                     <button onClick = {() => setIsEditing(false)}>Cancel</button>
                     </div>
