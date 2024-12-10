@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar';
 
 
 const Hangman = () => {
-  const [wordToGuess, setWordToGuess] = useState(() => {
+  const [wordToGuess] = useState(() => {
     return words[Math.floor(Math.random() * words.length)]
   })
 
@@ -22,6 +22,8 @@ const Hangman = () => {
     if (guessedLetters.includes(letter) || isLoser || isWinner) return
     setGuessedLetters(currentLetters => [ ...currentLetters, letter])
   }, [guessedLetters, isWinner, isLoser])
+
+  const refreshPage = () => { window.location.reload();};
 
 
   
@@ -56,8 +58,9 @@ useEffect(()=>{
     }}
     >
         <div style={{ fontSize: "2rem", textAlign: "center"}}>
-          {isWinner && "You Win! - Refresh to try again!"} 
-          {isLoser && "You Lose! :( - Refresh to try again!"} 
+          {isWinner && "You Win! - Click 'New Game' to try again!"} 
+          {isLoser && "You Lose! :( - Click 'New Game' to try again!"}
+          <button onClick={refreshPage} style={{ padding: '10px 20px', fontSize: '1rem' }}> New Game </button>
         </div>
       
       <Navbar />
