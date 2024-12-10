@@ -9,6 +9,9 @@ No installation required - This is a web application.
 # Usage
 The user will first be prompted to login/signup on the website, then they can start playing the game.
 
+# Features
+Some of the features include creating a profile/logging in, Hangman game, Leaderboards.
+
 # Credits
 Lehrer16 - https://github.com/Lehrer16 
 
@@ -19,7 +22,6 @@ IMChamberlain = https://github.com/IMChamberlain
 # License
 MIT License
 
-# Features
-Some of the features include creating a profile/logging in, Hangman game, Leaderboards.
+
 
 
