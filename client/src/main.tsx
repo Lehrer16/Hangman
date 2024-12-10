@@ -6,6 +6,7 @@ import Hangman from './pages/Hangman'
 import Home from './pages/Home';
 import ErrorPage from './pages/ErrorPage';
 import Account from './components/Account';
+import Hiscores from './pages/Hiscores';
 
 const router = createBrowserRouter([
   {
@@ -16,12 +17,19 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
-      }, {
+      },
+
+      {
         path: '/hangman',
         element: <Hangman />
-      }, {
+      },
+      {
         path: '/account',
         element: <Account />
+      },
+      {
+        path: '/hi-scores',
+        element: <Hiscores />
       }
     ]
   }

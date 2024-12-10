@@ -44,11 +44,12 @@ useEffect(()=>{
 
   return (
 
-    <div
+    <div className='hangman'
     style={{
       maxWidth: "800px",
       display: "flex",
       flexDirection: "column",
+      justifyContent:"center",
       gap: "2rem",
       margin: "0, auto",
       alignItems: "center"
@@ -58,6 +59,7 @@ useEffect(()=>{
           {isWinner && "You Win! - Refresh to try again!"} 
           {isLoser && "You Lose! :( - Refresh to try again!"} 
         </div>
+      
       <Navbar />
       <HangmanDrawing 
 

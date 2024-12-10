@@ -12,7 +12,7 @@ type KeyboardProps = {
 }
 export function Keyboard({ disabled=false, activeLetters, inactiveLetters, addGuessedLetter }: KeyboardProps) {
     return (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(75px, 1fr))", gap: ".5rem", textTransform: "uppercase" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(75px, 1fr))", gap: ".5rem", textTransform: "uppercase", width:"800px" }}>
             {KEYS.map(key => {
                 const isActive = activeLetters.includes(key);
                 const isInactive = inactiveLetters.includes(key);
