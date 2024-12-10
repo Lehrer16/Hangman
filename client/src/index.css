@@ -87,6 +87,7 @@ button:focus-visible {
   padding: .5rem;
   font-weight: bold;
   cursor: pointer;
+  color: #4CAF50;
 }
 
 .wrongletter{
@@ -97,6 +98,7 @@ button:focus-visible {
   padding: .5rem;
   font-weight: bold;
   cursor: pointer;
+  color: rgb(218, 0, 0);
 }
 
 .key:focus,
