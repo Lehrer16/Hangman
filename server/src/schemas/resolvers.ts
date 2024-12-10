@@ -17,7 +17,7 @@ const resolvers = {
     Mutation: {
         addUser: async (_parent: any, args: any): Promise<{ token: string; user: IUserDocument }> => {
             const user = await User.create(args);
-            const token = signToken(user.username, user.email, user._id);
+            const token = signToken(user.password, user.email, user._id);
             return { token, user: user as IUserDocument };
         },
         login: async (_parent: any, { email, password }: { email: string; password: string }): Promise<{ token: string; user: IUserDocument }> => {

@@ -148,13 +148,7 @@ const Home = () => {
                 required
               />
             </div>
-            <div>
-              <label>Confirm Password</label>
-              <input
-                type="password"
-                required
-                />
-            </div>
+            
             <button type="submit">Create Account</button>
           </form>
         </div>

@@ -1,48 +1,60 @@
-import React, { useState, FormEvent, ChangeEvent } from 'react';
-import { UserLogin } from '../interfaces/UserLogin';
-import { login } from '../api/authAPI';
-import auth from '../utils/auth';
+import { useState, type FormEvent, type ChangeEvent } from 'react';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
 
-const Login = () => {
+interface LoginProps {
+    onLoginSuccess: () => void;
+}
+
+const Login = ({onLoginSuccess}: LoginProps) => {
     //this state is used to manage the login form data
-    const [loginData, setLoginData] = useState<UserLogin>({
-        username: '',
-        password: ''
-    });
+    const [formState, setFormState] = useState({email: '', password: ''});
+    const [login] = useMutation(LOGIN_USER);
 
     //meant to handle the changes in the input fields
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setLoginData({
-        ...loginData,
+
+    setFormState({
+        ...formState,
         [name]: value
     });
 };
 // handles form submission for login
-const handleSubmit = async (e: FormEvent) => {
+const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    console.log(formState);
     try {
-        // calls the login API with the loginData
-        const data = await login(loginData);
-        // if able to login there's a call made to store the token in localStorage
-        auth.login(data.token);
-    } catch (err) {
-        console.error('Failed to login', err);  // prints out an error in case the login fails 
+      const { data } = await login({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.login.token);
+      onLoginSuccess();
+    } catch (e) {
+      console.error(e);
     }
-};
+
+    // clear form values
+    setFormState({
+      email: '',
+      password: '',
+    });
+  };
 
 return (
     <div className='form-container'>
-        <form className='form login-form' onSubmit={handleSubmit}>
+        <form className='form login-form' onSubmit={handleFormSubmit}>
             <h1>Login</h1>
             {/* This is the input field for the username */}
             <div className="form-group">
-                <label>Username</label>
+                <label>Email</label>
                 <input
                     className="form-input"
                     type='text'
-                    name='username'
-                    value={loginData.username || ''}
+                    name='email'
+                    value={formState.email}
                     onChange={handleChange}
                 />
             </div>
@@ -53,7 +65,7 @@ return (
                     className="form-input"
                     type='password'
                     name='password'
-                    value={loginData.password || ''}
+                    value={formState.password}
                     onChange={handleChange}
                 />
             </div>

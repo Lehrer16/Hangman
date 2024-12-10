@@ -24,6 +24,7 @@ const app = express();
 
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async () => {
+  
   await server.start();
   await db;
 

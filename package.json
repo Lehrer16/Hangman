@@ -24,6 +24,8 @@
     "wait-on": "^8.0.1"
   },
   "dependencies": {
+    "@apollo/client": "^3.12.2",
+    "graphql": "^16.9.0",
     "react-router-dom": "^6.26.2"
   }
 }
