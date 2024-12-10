@@ -7,11 +7,16 @@ const Navbar: React.FC= ({ }) => {
     return (
         <div className='container'>
         <nav className="navbar">
-            <ul>
-                <Link to="/">Home   </Link>
-                <Link to="/Account"> Account   </Link>
-                <Link to="/Hi-Scores"> Hi-Scores   </Link>
-            </ul>
+            <Link to="/">
+            <button>Home</button>
+            </Link>
+            <Link to="/Account">
+            <button>Account</button>
+            </Link>
+            <Link to="/Hi-Scores">
+            <button>High Scores</button>
+            </Link>
+
         </nav>
         </div>
     );

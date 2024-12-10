@@ -91,7 +91,10 @@ export function HangmanDrawing({numberOfGuesses}: HangmanDrawingProps){
         
         <div style={{height: "50px", width: "10px", top: "0", right: "0", position: "absolute", background: "black"}} />
         <div style={{height: "10px", width: "200px", marginLeft: "120px", background: "black"}} />
-        <div style={{height: "400px", width: "10px", marginLeft: "120px", background: "black"}} />
+        <div style={{height: "40vh", width: "10px", marginLeft: "120px", background: "black"}} />
         <div style={{height: "10px", width: "250px", background: "black"}} />
     </div>
 }
+  
+  
+  

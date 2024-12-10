@@ -81,9 +81,9 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <div className="logo">
-        <img src={logo} alt="Hangman" />
+    <div className="homePage">
+      <div>
+        <img className="logo" src={logo} alt="Hangman" />
       </div>
 
       {/* Conditional rendering based on login status */}
@@ -104,10 +104,12 @@ const Home = () => {
       {/* Login Form */}
       {showLoginForm && (
         <div>
-          <h2>Log In</h2>
+          {/* <h2>Log In</h2> */}
           <form onSubmit={handleLoginSubmit}>
             <div>
-              <label>Email</label>
+              <label>Email:</label>
+            </div>
+            <div>
               <input
                 type="email"
                 value={email}
@@ -116,7 +118,9 @@ const Home = () => {
               />
             </div>
             <div>
-              <label>Password</label>
+              <label>Password:</label>
+            </div>
+            <div>
               <input
                 type="password"
                 value={password}
@@ -132,17 +136,30 @@ const Home = () => {
       {/* Create Account Form */}
       {showCreateAccountForm && (
         <div>
-          <h2>Create Account</h2>
+          {/* <h2>Create Account</h2> */}
           <form onSubmit={handleCreateAccountSubmit}>
             <div>
-              <label>Email</label>
+              <label>Email:</label>
+            </div>
+            <div>
               <input
                 type="email"
                 required
               />
             </div>
             <div>
-              <label>Password</label>
+              <label>Password:</label>
+            </div>
+            <div>
+              <input
+                type="password"
+                required
+              />
+            </div>
+            <div>
+              <label>Confirm Password:</label>
+            </div>
+            <div>
               <input
                 type="password"
                 required
