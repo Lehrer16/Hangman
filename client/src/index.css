@@ -53,7 +53,7 @@ input {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid black;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -69,14 +69,15 @@ button {
 }
 
 button:hover {
-  border-color: #545455;
+  border-color: black;
   transform: translateY(-3px);
   box-shadow: 0px 3px rgb(48, 48, 48);
 }
 
 button:focus,
 button:focus-visible {
-  outline: 1px auto -webkit-focus-ring-color;
+  outline: 1px solid black;
+  outline-offset: 2px;
 }
 
 .rightletter{
