@@ -1,7 +1,6 @@
-
 import IUserContext from '../interfaces/UserContext.js';
 import IUserDocument from '../interfaces/UserDocument.js';
-import { User } from '../models/index.js';
+import User from '../models/user.js'; // Adjust the import path if necessary
 import { signToken, AuthenticationError } from '../services/auth-service.js';
 
 const resolvers = {
@@ -13,11 +12,18 @@ const resolvers = {
             }
             throw new AuthenticationError('User not authenticated');
         },
+        users: async (): Promise<IUserDocument[]> => {
+            const users = await User.find().select('-__v -password') as IUserDocument[];
+            if (!users) {
+                throw new Error('No users found');
+            }
+            return users;
+        },
     },
     Mutation: {
         addUser: async (_parent: any, args: any): Promise<{ token: string; user: IUserDocument }> => {
             const user = await User.create(args);
-            const token = signToken(user.password, user.email, user._id);
+            const token = signToken(user.username, user.email, user._id);
             return { token, user: user as IUserDocument };
         },
         login: async (_parent: any, { email, password }: { email: string; password: string }): Promise<{ token: string; user: IUserDocument }> => {
