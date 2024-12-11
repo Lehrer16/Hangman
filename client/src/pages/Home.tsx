@@ -1,24 +1,22 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../utils/auth.ts';
 import logo from '../assets/hangman_pic.png';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import Login from './Login';
 import '../index.css';
 
 const Home = () => {
-  // States used to control login form visibility
+  const navigate = useNavigate(); // Use the useNavigate hook for redirection
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showCreateAccountForm, setShowCreateAccountForm] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // Handle form inputs
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value);
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 
-  // Apollo Client setup
   const httpLink = createHttpLink({
     uri: '/graphql',
   });
@@ -38,13 +36,12 @@ const Home = () => {
     cache: new InMemoryCache(),
   });
 
-  // Handle login form submission (JWT integration)
   const handleLoginSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const loginData = { email, password };
     try {
-      const response = await fetch('http://127.0.0.1:3001', {
+      const response = await fetch('http://127.0.0.1:3001/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -63,12 +60,12 @@ const Home = () => {
 
       setIsLoggedIn(true);
       setShowLoginForm(false);
+      navigate('/hangman'); // Redirect to /hangman on successful login
     } catch (error) {
-      console.error(`Error ${isLoggedIn ? 'signing up' : 'logging in'}:`, error);
+      console.error('Error logging in:', error);
     }
   };
 
-  // Handle create account form submission (you'll integrate this with backend later)
   const handleCreateAccountSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert('Account created!');
@@ -117,10 +114,27 @@ const Home = () => {
 
       {showLoginForm && (
         <ApolloProvider client={client}>
-          <Login onLoginSuccess={() => {
-            setIsLoggedIn(true);
-            setShowLoginForm(false);
-          }} />
+          <form onSubmit={handleLoginSubmit}>
+            <div>
+              <label>Email:</label>
+              <input
+                type="email"
+                value={email}
+                onChange={handleEmailChange} // Use handleEmailChange
+                required
+              />
+            </div>
+            <div>
+              <label>Password:</label>
+              <input
+                type="password"
+                value={password}
+                onChange={handlePasswordChange} // Use handlePasswordChange
+                required
+              />
+            </div>
+            <button type="submit">Log In</button>
+          </form>
         </ApolloProvider>
       )}
 
@@ -129,21 +143,24 @@ const Home = () => {
           <form onSubmit={handleCreateAccountSubmit}>
             <div>
               <label>Email:</label>
-            </div>
-            <div>
-              <input type="email" required />
+              <input 
+                type="email" 
+                required 
+              />
             </div>
             <div>
               <label>Password:</label>
-            </div>
-            <div>
-              <input type="password" required />
+              <input 
+                type="password" 
+                required 
+              />
             </div>
             <div>
               <label>Confirm Password:</label>
-            </div>
-            <div>
-              <input type="password" required />
+              <input 
+                type="password" 
+                required 
+              />
             </div>
             <button type="submit">Create Account</button>
           </form>

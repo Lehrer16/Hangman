@@ -1,18 +1,13 @@
 import express from 'express';
 import path from 'node:path';
+import cors from 'cors';
 import type { Request, Response } from 'express';
-// Import the ApolloServer class
-import {
-  ApolloServer,
-} from '@apollo/server';
-import {
-  expressMiddleware
-} from '@apollo/server/express4';
+import { ApolloServer } from '@apollo/server';
+import { expressMiddleware } from '@apollo/server/express4';
 import { authenticateToken } from './services/auth-service.js';
-// Import the two parts of a GraphQL schema
 import { typeDefs, resolvers } from './schemas/index.js';
 import db from './config/connection.js';
-
+import User from './models/user.js'; // Import User model
 
 const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
@@ -22,20 +17,47 @@ const server = new ApolloServer({
 
 const app = express();
 
-// Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async () => {
-  
   await server.start();
   await db;
 
+  app.use(cors());
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 
-  app.use('/graphql', expressMiddleware(server as any,
-    {
-      context: authenticateToken as any
+  app.options('/auth/login', cors());
+
+  app.post('/auth/login', cors(), async (req: Request, res: Response) => {
+    const { email, password } = req.body;
+
+    try {
+      // Fetch user from the database
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        return res.status(400).json({ message: 'Invalid credentials' });
+      }
+
+      // Verify password
+      const isPasswordValid = await user.isCorrectPassword(password);
+
+      if (!isPasswordValid) {
+        return res.status(400).json({ message: 'Invalid credentials' });
+      }
+
+      // If valid, create and return the token
+      const token = 'your-jwt-token'; // Replace with your JWT creation logic
+      return res.json({ token });
+
+    } catch (error) {
+      console.error('Error authenticating user:', error);
+      return res.status(500).json({ message: 'Server error' });
     }
-  ));
+  });
+
+  app.use('/graphql', expressMiddleware(server as any, {
+    context: authenticateToken as any
+  }));
 
   if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/dist')));
@@ -49,8 +71,6 @@ const startApolloServer = async () => {
     console.log(`API server running on port ${PORT}!`);
     console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
   });
-
 };
 
-// Call the async function to start the server
 startApolloServer();
