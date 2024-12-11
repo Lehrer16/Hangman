@@ -1,5 +1,6 @@
 import express from 'express';
-import path from 'node:path';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import cors from 'cors';
 import type { Request, Response } from 'express';
 import { ApolloServer } from '@apollo/server';
@@ -7,7 +8,7 @@ import { expressMiddleware } from '@apollo/server/express4';
 import { authenticateToken } from './services/auth-service.js';
 import { typeDefs, resolvers } from './schemas/index.js';
 import db from './config/connection.js';
-import User from './models/user.js'; // Import User model
+import User from './models/user.js'; // Correctly import User model
 
 const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
@@ -16,6 +17,10 @@ const server = new ApolloServer({
 });
 
 const app = express();
+
+// Define __dirname using import.meta.url
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const startApolloServer = async () => {
   await server.start();
@@ -31,21 +36,18 @@ const startApolloServer = async () => {
     const { email, password } = req.body;
 
     try {
-      // Fetch user from the database
       const user = await User.findOne({ email });
 
       if (!user) {
         return res.status(400).json({ message: 'Invalid credentials' });
       }
 
-      // Verify password
       const isPasswordValid = await user.isCorrectPassword(password);
 
       if (!isPasswordValid) {
         return res.status(400).json({ message: 'Invalid credentials' });
       }
 
-      // If valid, create and return the token
       const token = 'your-jwt-token'; // Replace with your JWT creation logic
       return res.json({ token });
 
