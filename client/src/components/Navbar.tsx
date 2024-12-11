@@ -8,7 +8,7 @@ const Navbar: React.FC= ({ }) => {
         <div className='container'>
         <nav className="navbar">
             <Link to="/">
-            <button>Home</button>
+            <button>Log Out</button>
             </Link>
             <Link to="/Account">
             <button>Account</button>

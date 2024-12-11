@@ -50,10 +50,12 @@ const Login = ({ onLoginSuccess }: LoginProps) => {
     return (
         <div className='form-container'>
             <form className='form login-form' onSubmit={handleFormSubmit}>
-                <h1>Login</h1>
                 {/* Input field for the email */}
                 <div className='form-group'>
-                    <label>Email</label>
+                    <div>
+                    <label>Email:</label>
+                    </div>
+                    <div>
                     <input
                         className='form-input'
                         type='text'
@@ -61,10 +63,14 @@ const Login = ({ onLoginSuccess }: LoginProps) => {
                         value={formState.email}
                         onChange={handleChange}
                     />
+                    </div>
                 </div>
                 {/* Input field for the password */}
                 <div className='form-group'>
-                    <label>Password</label>
+                    <div>
+                    <label>Password:</label>
+                    </div>
+                    <div>
                     <input
                         className='form-input'
                         type='password'
@@ -72,6 +78,7 @@ const Login = ({ onLoginSuccess }: LoginProps) => {
                         value={formState.password}
                         onChange={handleChange}
                     />
+                    </div>
                 </div>
                 {/* Submit button */}
                 <div className='form-group'>
