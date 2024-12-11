@@ -67,8 +67,8 @@ const Hangman = () => {
         }}
       >
         <div style={{ fontSize: "calc(1.5rem + 1vw)" }}>
-          {isWinner && "🎉You Win! - Refresh to try again!"}
-          {isLoser && `❌ You Lose! - Refresh to try again!`}
+          {isWinner && '🎉You Win! - Click "New Game" to try again!'}
+          {isLoser && '❌ You Lose! - Click "New Game" to try again!'}
         </div>
 
         <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
@@ -88,7 +88,12 @@ const Hangman = () => {
 
         <button
           onClick={startNewGame}
-          style={{ padding: "10px 20px", fontSize: "1rem" }}
+          style={{     
+            position: "fixed",
+            top: "30px",       
+            right: "50px",      
+            padding: "10px 20px",
+            fontSize: "1rem", }}
         >
           New Game
         </button>
